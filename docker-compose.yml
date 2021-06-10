@@ -1,0 +1,29 @@
+version: '3'
+services:
+  #############
+  ## CLIENT ##
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    networks:
+      - webapp
+    ports:
+      - 3000:8080
+    restart: always
+    container_name: client
+  ##############
+  ## SERVER ##
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks:
+      - webapp
+    restart: always
+    ports:
+      - 4200:4200
+    command: [ 'node', 'dist/main.js']
+    container_name: server
+  #############
+
