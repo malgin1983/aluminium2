@@ -35,5 +35,5 @@ export class Products extends Model<Products> {
     description: string;
 
     @HasMany(() => ProductsImages)
-    address: ProductsImages[];
+    images: ProductsImages[];
 }

@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from 'src/user/entity/user.entity';
 import {Products} from "../products/entity/products.entity";
+import {ProductsImages} from "../products/entity/images.entity";
 require('dotenv').config()
 export const databaseProviders = [
   {
@@ -14,7 +15,7 @@ export const databaseProviders = [
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
       });
-      sequelize.addModels([User, Products]);
+      sequelize.addModels([User, Products, ProductsImages]);
       await sequelize.sync();
       return sequelize;
     },

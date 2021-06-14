@@ -9,7 +9,7 @@ import {
 } from 'sequelize-typescript';
 import {Products} from "./products.entity";
 
-export interface IProduct {
+export interface IProductsImages {
     id?: number;
     header: string;
     password: string;
@@ -29,13 +29,8 @@ export class ProductsImages extends Model<ProductsImages> {
     id: number;
 
     @Column
-    title: string;
+    url: string;
 
-    @Column
-    body: string;
-
-    @Column
-    name: string;
     @ForeignKey(() => Products)
     @Column
     productID: number;
