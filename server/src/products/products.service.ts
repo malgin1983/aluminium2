@@ -25,12 +25,9 @@ export class ProductsService {
         return this.product.create(data);
     }
 
-    async getAllProductImages() {
-        return this.images.findAll();
-    }
 
     async getProductImage(id: number){
-        return this.images.findOne({where: {productID: id}, raw: true});
+        return this.images.findAll({where: {productID: id}, raw: true});
     }
 
     async createProductImages(data: IProductsImages) {
