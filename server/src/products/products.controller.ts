@@ -1,7 +1,5 @@
 import {Body, Controller, Get, HttpStatus, Param, Post, Req, Res} from '@nestjs/common';
 import {ProductsService} from "./products.service";
-import {Products} from "./entity/products.entity";
-import {ProductsImages} from "./entity/images.entity";
 
 @Controller('api/products')
 export class ProductsController {
@@ -39,15 +37,6 @@ export class ProductsController {
     }
 
     // Images Products controller
-    @Get('/images')
-    async getProductsImages(@Res() res) {
-        try {
-            const result = await this.productsService.getAllProductImages();
-            res.status(HttpStatus.OK).json(result);
-        } catch (error) {
-            res.status(HttpStatus.BAD_GATEWAY).json(error);
-        }
-    }
 
     @Get('/images/:id')
     async getImagesProduct(@Param('id') id, @Res() res) {
