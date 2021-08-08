@@ -1,13 +1,5 @@
-import {
-    Column,
-    Model,
-    PrimaryKey,
-    Table,
-    AutoIncrement,
-    HasMany,
-
-} from 'sequelize-typescript';
-import {ProductsImages} from "./images.entity";
+import { Column, Model, PrimaryKey, Table, AutoIncrement, HasMany } from 'sequelize-typescript';
+import { ProductsImages } from './images.dto';
 
 export interface IProduct {
     id?: number;
@@ -18,7 +10,7 @@ export interface IProduct {
 }
 
 @Table({
-    tableName: 'Products',
+    tableName: 'products',
     timestamps: true,
     paranoid: true,
 })

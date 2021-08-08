@@ -1,5 +1,5 @@
-import {Products} from "./entity/products.entity";
-import {ProductsImages} from "./entity/images.entity";
+import { Products } from './dto/products.dto';
+import { ProductsImages } from './dto/images.dto';
 
 export const Repositories = {
     ProductsRepository: 'ProductsRepository',
@@ -14,7 +14,5 @@ export const ProductsProvider = [
     {
         provide: Repositories.ImagesProductsRepository,
         useValue: ProductsImages,
-
-    }
-
+    },
 ];
