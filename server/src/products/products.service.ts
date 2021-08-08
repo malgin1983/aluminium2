@@ -1,7 +1,7 @@
-import {Inject, Injectable} from '@nestjs/common';
-import {Repositories} from "./products.provider";
-import {IProduct, Products} from "./entity/products.entity";
-import {IProductsImages, ProductsImages} from "./entity/images.entity";
+import { Inject, Injectable } from '@nestjs/common';
+import { Repositories } from './products.provider';
+import { IProduct, Products } from './dto/products.dto';
+import { IProductsImages, ProductsImages } from './dto/images.dto';
 
 @Injectable()
 export class ProductsService {
@@ -10,24 +10,37 @@ export class ProductsService {
         private readonly product: typeof Products,
         @Inject(Repositories.ImagesProductsRepository)
         private readonly images: typeof ProductsImages,
-
-    ) {
-    }
-    async getProduct(id: number){
-        return this.product.findOne({where: {id: id}, raw: true});
+    ) {}
+    async getProduct(id: number) {
+        return this.product.findOne({
+            where: { id: id },
+            include: [
+                {
+                    model: ProductsImages,
+                    as: 'product_image',
+                },
+            ],
+            raw: true,
+        });
     }
 
     async getAllProducts() {
-        return this.product.findAll();
+        return this.product.findAll({
+            include: [
+                {
+                    model: ProductsImages,
+                    as: 'product_image',
+                },
+            ],
+        });
     }
 
     async createProduct(data: IProduct) {
         return this.product.create(data);
     }
 
-
-    async getProductImage(id: number){
-        return this.images.findAll({where: {productID: id}, raw: true});
+    async getProductImage(id: number) {
+        return this.images.findAll({ where: { productID: id }, raw: true });
     }
 
     async createProductImages(data: IProductsImages) {

@@ -1,5 +1,5 @@
-import {Body, Controller, Get, HttpStatus, Param, Post, Req, Res} from '@nestjs/common';
-import {ProductsService} from "./products.service";
+import { Body, Controller, Get, HttpStatus, Param, Post, Req, Res } from '@nestjs/common';
+import { ProductsService } from './products.service';
 
 @Controller('api/products')
 export class ProductsController {
@@ -10,7 +10,7 @@ export class ProductsController {
     async getAllProducts(@Res() res) {
         try {
             const result = await this.productsService.getAllProducts();
-        res.status(HttpStatus.OK).json(result);
+            res.status(HttpStatus.OK).json(result);
         } catch (error) {
             res.status(HttpStatus.BAD_GATEWAY).json(error);
         }
@@ -58,5 +58,3 @@ export class ProductsController {
         }
     }
 }
-
-
