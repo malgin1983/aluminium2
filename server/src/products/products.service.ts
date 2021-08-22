@@ -17,10 +17,8 @@ export class ProductsService {
             include: [
                 {
                     model: ProductsImages,
-                    as: 'product_image',
                 },
             ],
-            raw: true,
         });
     }
 
@@ -29,7 +27,6 @@ export class ProductsService {
             include: [
                 {
                     model: ProductsImages,
-                    as: 'product_image',
                 },
             ],
         });
