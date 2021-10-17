@@ -18,8 +18,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 4200:4200
+      - 5000:5000
     command: [ 'node', 'dist/main.js']
     container_name: server
   #############
-

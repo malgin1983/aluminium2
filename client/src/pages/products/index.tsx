@@ -1,25 +1,39 @@
+import *as React from 'react'
 import productStyles from "./styles.module.css";
 import Link from "next/link";
-import { InferGetStaticPropsType } from 'next'
 
-export const getStaticProps = async () => {
-    const res = await fetch('http://localhost:5000/api/products')
-    const texts = await res.json()
-
-    return {
-        props: {
-            texts,
-        },
-    }
+interface  Iimage {
+    id: number;
+    productID: number;
+    url: string
 }
 
-const ProductPage: ({texts}: InferGetStaticPropsType<() => Promise<{ props: { texts: any } }>>) => JSX.Element = ({ texts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+interface IProduct {
+    id: number;
+    title: string;
+    description: string;
+    images: Array<Iimage>
+}
+
+interface IProducts {
+    data: Array<IProduct>
+
+}
+
+const ProductPage: React.FC<IProducts> = (props) => {
+    const {data} = props
+
+    React.useEffect(()=> {
+        console.log('data effect', data);
+
+    }, [data])
+
     return (
         <div >
             <h3>PRODUCTS</h3>
             <ul>
-                {texts?.length && (
-                    texts?.map( (elem, key) => {
+                {data?.length && (
+                    data?.map( (elem, key) => {
                         return (
                             <li key={key}>
                                 <h4>{elem?.title}</h4>
@@ -35,7 +49,13 @@ const ProductPage: ({texts}: InferGetStaticPropsType<() => Promise<{ props: { te
         </div>
     )
 }
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`http://localhost:5000/api/products`)
+    const data = await res.json()
+    console.log('server render data', data);
 
+    // Pass data to the page via props
+    return { props: { data } }
+}
 export default ProductPage
-
-

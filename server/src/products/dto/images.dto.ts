@@ -11,8 +11,8 @@ export interface IProductsImages {
 
 @Table({
     tableName: 'product_image',
-    timestamps: true,
-    paranoid: true,
+    timestamps: false,
+    paranoid: false,
 })
 export class ProductsImages extends Model<ProductsImages> {
     @PrimaryKey

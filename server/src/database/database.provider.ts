@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize-typescript';
-import { User } from 'src/user/dto/user.dto';
 import { Products } from '../products/dto/products.dto';
 import { ProductsImages } from '../products/dto/images.dto';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -16,7 +15,7 @@ export const databaseProviders = [
                 password: process.env.DB_PASS,
                 database: process.env.DB_NAME,
             });
-            sequelize.addModels([User, Products, ProductsImages]);
+            sequelize.addModels([Products, ProductsImages]);
             await sequelize.sync();
             return sequelize;
         },
