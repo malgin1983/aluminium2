@@ -51,7 +51,7 @@ const ProductPage: React.FC<IProducts> = (props) => {
 }
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:5000/api/products`)
+    const res = await fetch(`http://server:5500/api/products`)
     const data = await res.json()
     console.log('server render data', data);
 

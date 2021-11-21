@@ -8,6 +8,6 @@ RUN npm install
 
 RUN npm run build
 
-EXPOSE 5500
+EXPOSE 3000
 
-CMD ["npm", "run" ,"prod"]
+CMD ["npm", "run" ,"start"]

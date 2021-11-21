@@ -9,11 +9,11 @@ export const databaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: process.env.DB_HOST,
+                host: '5.188.45.220',
                 port: 5432,
-                username: process.env.DB_USER,
-                password: process.env.DB_PASS,
-                database: process.env.DB_NAME,
+                username: 'admin',
+                password: 'malgin1983',
+                database: 'premium',
             });
             sequelize.addModels([Products, ProductsImages]);
             await sequelize.sync();
