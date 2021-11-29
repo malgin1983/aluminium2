@@ -1,19 +1,19 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Products } from '../products/dto/products.dto';
 import { ProductsImages } from '../products/dto/images.dto';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
+import { PROCESS } from '../env';
+
 export const databaseProviders = [
     {
         provide: 'SEQUELIZE',
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: '5.188.45.220',
+                host: PROCESS.DB_HOST,
                 port: 5432,
-                username: 'admin',
-                password: 'malgin1983',
-                database: 'premium',
+                username: PROCESS.DB_USER,
+                password: PROCESS.DB_PASS,
+                database: PROCESS.DB_NAME,
             });
             sequelize.addModels([Products, ProductsImages]);
             await sequelize.sync();
