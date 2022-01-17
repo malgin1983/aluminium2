@@ -1,6 +1,7 @@
 import *as React from 'react'
 import productStyles from "./styles.module.css";
 import Link from "next/link";
+import Layout from "../../components/layout/layout";
 
 interface  Iimage {
     id: number;
@@ -29,31 +30,33 @@ const ProductPage: React.FC<IProducts> = (props) => {
     }, [data])
 
     return (
-        <div >
-            <h3>PRODUCTS</h3>
-            <ul>
-                {data?.length && (
-                    data?.map( (elem, key) => {
-                        return (
-                            <li key={key}>
-                                <h4>{elem?.title}</h4>
-                                <p>{elem?.description}</p>
-                            </li>
-                        )
-                    })
-                )}
-            </ul>
-            <Link href={'/'}>
-                <a className={productStyles.link}>Main</a>
-            </Link>
-        </div>
+        <Layout >
+            <div >
+                <h3>PRODUCTS</h3>
+                <ul>
+                    {data?.length && (
+                        data?.map( (elem, key) => {
+                            return (
+                                <li key={key}>
+                                    <h4>{elem?.title}</h4>
+                                    <p>{elem?.description}</p>
+                                </li>
+                            )
+                        })
+                    )}
+                </ul>
+                <Link href={'/'}>
+                    <a className={productStyles.link}>Main</a>
+                </Link>
+            </div>
+        </Layout>
+
     )
 }
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`http://server:5500/api/products`)
+    const res = await fetch(`http://localhost:5500/api/products`)
     const data = await res.json()
-    console.log('server render data', data);
 
     // Pass data to the page via props
     return { props: { data } }
