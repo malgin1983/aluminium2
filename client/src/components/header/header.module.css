@@ -6,13 +6,20 @@
     align-items: center;
     color: black;
     width: 100vw;
-    padding: 24px;
-    font-family: 'Poiret One', cursive;
+    padding: 0 24px;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
 }
 
+@media (max-width: 860px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .title {
-    font-size: 42px;
+    font-size: 2em;
     font-weight: normal;
 }
 
@@ -29,4 +36,9 @@
 
 .header__mail {
     display: block;
+}
+
+.header__logo {
+    width: 16rem;
+    height: 8rem;
 }

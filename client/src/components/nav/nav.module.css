@@ -1,0 +1,35 @@
+.nav {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 24px;
+    color: black;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.listItem {
+    margin-right: 2em;
+    font-weight: lighter;
+    cursor: pointer;
+    padding-bottom: 0.7vw;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.5rem;
+}
+
+.listWidthBorder {
+    margin-right: 2em;
+    font-weight: lighter;
+    cursor: pointer;
+    padding-bottom: calc(0.7vw - 2px);
+    border-bottom: 2px solid black;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.5rem;
+}
